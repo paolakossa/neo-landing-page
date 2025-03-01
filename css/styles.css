@@ -1,0 +1,823 @@
+/* ========================================================
+   CSS Variables & Global Styles
+   ======================================================== */
+:root {
+  /* Dark mode colors (default) */
+  --bg-color-dark: rgba(11, 13, 14);
+  --text-color-default: #f9fafa;
+  --bg-color-header: rgba(34, 38, 42, 1);
+  --bg-color-active: rgba(50, 56, 62, 1);
+  --bg-color-btn: #21a584;
+  --bg-color-btn-light: #6bf7b1;
+  --bg-color-active-light: rgba(224, 231, 239, 0.2);
+  --bg-color-steps: #101010;
+  --bg-color-card: #1c1c1c;
+  --falling-coin-image: url("/assets/images/Casino Chips/2.png");
+}
+
+/* Override variables for light mode */
+body.light-mode {
+  --bg-color-dark: #f9fafa;
+  --text-color-default: #111;
+  --bg-color-header: #e0e0e0;
+  --bg-color-active: #ccc;
+  --bg-color-btn: rgb(108, 165, 222);
+  --bg-color-btn-light: #c1def7;
+  --bg-color-steps: #f2f2f2;
+  --bg-color-card: #ffffff;
+  --falling-coin-image: url("/assets/images/Casino Chips/6.png");
+}
+
+/* Reset and Global Element Styles */
+body,
+html {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto", sans-serif;
+  background-color: var(--bg-color-dark);
+  color: var(--text-color-default);
+  font-weight: 400;
+  line-height: 16px;
+  overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+/* ========================================================
+     Header & Navbar
+     ======================================================== */
+header {
+  position: relative;
+  z-index: 1000; /* Ensure header is above background elements */
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 56px;
+  background-color: var(--bg-color-header);
+  padding: 0 1rem;
+}
+
+.navbar__container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Link styles */
+a {
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
+}
+
+/* Navbar links */
+li a {
+  display: block;
+  line-height: 56px;
+  color: var(--text-color-default);
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  padding: 0 8px;
+  /* Prevent text wrapping */
+  white-space: nowrap;
+}
+
+li a:hover,
+li a:active {
+  background-color: var(--bg-color-active);
+}
+
+/* Navbar Menu & Actions */
+.navbar__menu {
+  display: flex;
+  align-items: center;
+}
+
+.navbar__actions {
+  display: flex;
+  align-items: center;
+}
+
+/* Hamburger toggle (hidden by default) */
+.navbar__toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* Hamburger icon styling */
+.hamburger {
+  display: inline-block;
+  width: 24px;
+  height: 2px;
+  background-color: var(--text-color-default);
+  position: relative;
+}
+.hamburger::before,
+.hamburger::after {
+  content: "";
+  width: 24px;
+  height: 2px;
+  background-color: var(--text-color-default);
+  position: absolute;
+  left: 0;
+}
+.hamburger::before {
+  top: -8px;
+}
+.hamburger::after {
+  top: 8px;
+}
+
+/* Button styles */
+.btn.btn--secondary {
+  background-color: var(--bg-color-active);
+  color: var(--text-color-default);
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  padding: 8px 16px;
+  border-radius: 4px;
+  margin-right: 15px;
+}
+
+.btn.btn--secondary:hover {
+  background-color: var(--bg-color-active-light);
+  border: 1px solid var(--bg-color-active-light);
+}
+
+.btn.btn--primary {
+  background-color: var(--bg-color-btn);
+  color: var(--text-color-default);
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  padding: 8px 16px;
+  border-radius: 4px;
+  margin-right: 15px;
+  white-space: nowrap;
+}
+
+.btn.btn--primary:hover {
+  background-color: var(--bg-color-btn-light);
+  border: 1px solid var(--bg-color-btn);
+}
+
+/* ========================================================
+   Hero Slider & Slides
+   ======================================================== */
+.hero-slider {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.slider {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.slider__item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+  min-height: 55vh;
+  padding: 0 5%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 1s ease-in-out;
+  z-index: 0;
+}
+
+.slider__item.active {
+  display: flex;
+  position: relative;
+  opacity: 1;
+  pointer-events: auto;
+  z-index: 1;
+}
+
+/* Slide content styling */
+.slider__content {
+  max-width: 500px;
+}
+.slider__title {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: var(--text-color-default);
+}
+.slider__description {
+  font-size: 1.25rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.4;
+  color: var(--text-color-default);
+}
+
+/* Highlight button in slider */
+.btn.btn--highlight {
+  display: inline-block;
+  padding: 12px 24px;
+  background-color: var(--bg-color-btn);
+  color: var(--text-color-default);
+  text-transform: uppercase;
+  text-decoration: none;
+  font-weight: 600;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+.btn.btn--highlight:hover {
+  background-color: var(--bg-color-btn-light);
+  border: 1px solid var(--bg-color-btn);
+}
+
+/* Slide image container */
+.slider__image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.slider__image img {
+  max-width: 100%;
+  max-height: 200px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+/* ========================================================
+   Three Steps Section
+   ======================================================== */
+.three-steps {
+  padding: 60px 0;
+  background-color: var(--bg-color-steps);
+  text-align: center;
+}
+.three-steps h2 {
+  font-size: 36px;
+  margin-bottom: 40px;
+  color: var(--text-color-default);
+}
+
+/* Steps container */
+.steps {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+/* Individual step card */
+.step {
+  background-color: var(--bg-color-card);
+  padding: 2rem;
+  border-radius: 8px;
+  min-width: 100px;
+  max-width: 300px;
+  flex: 1;
+  color: var(--text-color-default);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: transform 0.6s ease, opacity 0.6s ease;
+}
+.step.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+.step:hover {
+  transform: translateY(-5px);
+  cursor: pointer;
+}
+.step h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: var(--text-color-default);
+}
+.step p {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--text-color-default);
+}
+
+/* ========================================================
+   Features Section (3 Cards)
+   ======================================================== */
+.features {
+  padding: 3rem 0;
+  text-align: center;
+  background-color: var(--bg-color-steps);
+}
+.features h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+.card {
+  background-color: var(--bg-color-card);
+  padding: 2rem;
+  border-radius: 8px;
+  min-width: 100px;
+  max-width: 300px;
+  flex: 1;
+  color: var(--text-color-default);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: transform 0.6s ease, opacity 0.6s ease;
+}
+.card.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+.card:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+}
+.card h3 {
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+}
+.card p {
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+/* ========================================================
+   Game Cards Section (Featured Slots)
+   ======================================================== */
+.game-cards {
+  padding: 2rem 0;
+  text-align: center;
+  background-color: var(--bg-color-steps);
+}
+.game-cards h2 {
+  color: var(--text-color-default);
+  margin-bottom: 1.5rem;
+}
+.game-cards__container {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+.slot-card {
+  position: relative;
+  width: 200px;
+  height: 300px;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: var(--bg-color-card);
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  opacity: 0;
+  transform: translateY(20px);
+}
+.slot-card:hover {
+  transform: scale(1.05);
+}
+.slot-card.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+  transition: transform 0.6s ease, opacity 0.6s ease;
+}
+.slot-card.fade-in:hover {
+  transform: translateY(0) scale(1.05);
+}
+
+/* Slot card layers */
+.slot-card__background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: cover;
+  background-position: center;
+  z-index: 1;
+}
+.slot-card__character {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  width: 80%;
+}
+.slot-card__character img {
+  width: 100%;
+  height: auto;
+}
+.slot-card__character.sweet-bonanza {
+  width: 60%;
+}
+.slot-card__logo {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  width: 80%;
+}
+.slot-card__logo.gates-of-olympus {
+  top: 150px;
+}
+.slot-card__logo img {
+  width: 100%;
+  height: auto;
+}
+
+/* Background images for specific games */
+.gates-of-olympus .slot-card__background {
+  background-image: url("/assets/images/Games/Gates of Olympus/Background/Freegame_BG.png");
+}
+.sweet-bonanza .slot-card__background {
+  background-image: url("/assets/images/Games/Sweet Bonanza 1000/Background/Basegame_BG_5000X1998.png");
+}
+.wolf-gold .slot-card__background {
+  background-image: url("/assets/images/Games/Wolf Gold Ultimate/Background/Wolf Gold Ultimate_5000x1998_Freegame.png");
+}
+
+/* ========================================================
+   Call-to-Action Section
+   ======================================================== */
+.call-to-action {
+  padding: 3rem 0;
+  text-align: center;
+  background-color: var(--bg-color-steps);
+}
+.call-to-action h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+.call-to-action p {
+  font-size: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+.btn.btn--cta {
+  background-color: var(--bg-color-btn);
+  padding: 14px 28px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-weight: 600;
+  color: var(--text-color-default);
+}
+.btn.btn--cta:hover {
+  background-color: var(--bg-color-btn-light);
+  border: 1px solid var(--bg-color-btn);
+}
+
+/* ========================================================
+   Footer
+   ======================================================== */
+.footer {
+  background-color: var(--bg-color-header);
+  padding: 1rem;
+  text-align: center;
+}
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  color: var(--text-color-default);
+}
+
+/* ========================================================
+   Falling Coins (Interactive Background)
+   ======================================================== */
+#falling-coins {
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  overflow: hidden;
+}
+.coin {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background-image: var(--falling-coin-image);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  animation: fall ease-in forwards;
+  z-index: 5;
+}
+@keyframes fall {
+  0% {
+    transform: translateY(-50px) rotate(0deg);
+    opacity: 0.5;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(70vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* ========================================================
+   Theme Switch (Dark/Light Toggle)
+   ======================================================== */
+.theme-switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 30px;
+  margin-right: 15px;
+  vertical-align: middle;
+}
+.theme-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.theme-switch .slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--bg-color-active);
+  transition: 0.4s;
+  border-radius: 34px;
+}
+.theme-switch .slider:before {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  left: 35px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: url("/assets/images/crescent-moon.svg") no-repeat center center;
+  background-size: contain;
+  transition: 0.4s;
+  opacity: 1;
+  filter: brightness(0.1) invert(1);
+}
+.theme-switch .slider:after {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  right: 30px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: url("/assets/images/sun-svgrepo-com.svg") no-repeat center center;
+  background-size: contain;
+  transition: 0.4s;
+  opacity: 0;
+}
+.theme-switch .thumb {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  left: 3px;
+  top: 3px;
+  background-color: var(--text-color-default);
+  border-radius: 50%;
+  transition: transform 0.4s;
+}
+.theme-switch input:checked + .slider {
+  background-color: var(--bg-color-btn);
+}
+.theme-switch input:checked + .slider:before {
+  opacity: 0;
+}
+.theme-switch input:checked + .slider:after {
+  opacity: 1;
+}
+.theme-switch input:checked + .slider .thumb {
+  transform: translateX(30px);
+}
+
+/* ========================================================
+   Language Switch (Portuguese/English Toggle)
+   ======================================================== */
+.lang-switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 30px;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+.lang-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.lang-switch .slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--bg-color-active);
+  transition: 0.4s;
+  border-radius: 34px;
+}
+/* Brazilian flag when off */
+.lang-switch .slider:before {
+  content: "";
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  left: 3px;
+  top: 3px;
+  background: url("/assets/images/brazil-svgrepo-com.svg") no-repeat center;
+  background-size: cover;
+  transition: 0.4s;
+}
+/* When checked, change to UK flag and slide */
+.lang-switch input:checked + .slider:before {
+  transform: translateX(30px);
+  background: url("/assets/images/united-kingdom-uk-svgrepo-com.svg") no-repeat
+    center;
+  background-size: cover;
+}
+
+/* ========================================================
+   Responsive Styles (Media Queries)
+   ======================================================== */
+@media (max-width: 768px) {
+  .slider__title {
+    font-size: 2rem;
+  }
+  .three-steps,
+  .features,
+  .call-to-action {
+    padding: 2rem 1rem;
+  }
+  .step,
+  .card {
+    width: 80%;
+  }
+  .navbar__menu li a {
+    font-size: 12px;
+    padding: 0 4px;
+  }
+  .navbar__container {
+    margin: 0 5px;
+  }
+  .slider__title {
+    font-size: 2rem;
+  }
+  .slider__description {
+    font-size: 1rem;
+  }
+  .slider__item {
+    gap: 1.5rem;
+    min-height: 40vh;
+    padding: 0 2%;
+  }
+  .slider__image img {
+    max-height: 150px;
+  }
+  .coin {
+    width: 35px;
+    height: 35px;
+  }
+  .features h2 {
+    font-size: 1.5rem;
+    line-height: 1.3;
+  }
+  /* Mobile menu toggle visible */
+  .navbar__toggle {
+    display: block;
+  }
+  .navbar__menu li {
+    margin: 0.5rem 0;
+  }
+  .navbar__menu {
+    display: none;
+    position: fixed;
+    top: 56px;
+    left: 0;
+    width: 100%;
+    background-color: var(--bg-color-header);
+    flex-direction: column;
+    padding: 1rem 0;
+    z-index: 9999;
+  }
+  .navbar__menu.active {
+    display: flex;
+  }
+  .navbar__container {
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 375px) {
+  .navbar__menu li a {
+    font-size: 10px;
+    padding: 0 2px;
+  }
+  .navbar__container {
+    margin: 0 5px;
+  }
+  .slider__item {
+    min-height: 45vh;
+    gap: 2rem;
+    padding: 0.5rem 2%;
+    flex-direction: column;
+    align-items: center;
+  }
+  .slider__title {
+    font-size: 1.2rem;
+  }
+  .slider__description {
+    font-size: 0.9rem;
+  }
+  .slider__image img {
+    max-height: 90px;
+  }
+  .btn.btn--highlight {
+    padding: 9px 15px;
+  }
+  .three-steps,
+  .features,
+  .call-to-action {
+    padding: 1.5rem 0.5rem;
+  }
+  .step,
+  .card {
+    width: 80%;
+    padding: 2rem;
+  }
+  .coin {
+    width: 20px;
+    height: 20px;
+  }
+  .theme-switch {
+    width: 50px;
+    height: 24px;
+  }
+  .theme-switch .slider:before,
+  .theme-switch .slider:after {
+    width: 16px;
+    height: 16px;
+  }
+  .theme-switch .thumb {
+    width: 20px;
+    height: 20px;
+  }
+  .three-steps h2 {
+    font-size: 25px;
+  }
+  .step h3 {
+    font-size: 1rem;
+  }
+  .steps {
+    flex-direction: column;
+  }
+  .card h3 {
+    font-size: 1rem;
+  }
+  .features h2 {
+    font-size: 1.5rem;
+    line-height: 1.3;
+  }
+  .cards {
+    flex-direction: column;
+  }
+  .call-to-action h2 {
+    font-size: 1.5rem;
+  }
+  .call-to-action p {
+    font-size: 1rem;
+  }
+  /* Hide primary button on mobile */
+  .btn.btn--primary {
+    display: none;
+  }
+}

@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <!-- Meta Information and Title -->
+    <meta charset="UTF-8" />
+    <!-- The title will be updated based on the translation -->
+    <title data-i18n="header.title">Leon Casino – Landing Page</title>
+    <meta
+      name="description"
+      content="Página de boas-vindas ao Leon Casino. Aproveite bônus de até 3000€ e 100 rodadas grátis!"
+      data-i18n="header.description"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Link to your main CSS file -->
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <!-- ===================== HEADER SECTION ===================== -->
+    <header>
+      <nav class="navbar">
+        <!-- Container for Logo and Menu -->
+        <div class="navbar__container">
+          <!-- Logo (static image) -->
+          <a href="#" class="navbar__logo">
+            <img src="assets/images/LeonLogo.svg" alt="Leon Casino" />
+          </a>
+
+          <!-- Mobile Menu Toggle (Hamburger icon) -->
+          <button class="navbar__toggle" aria-label="Open Menu">
+            <span class="hamburger"></span>
+          </button>
+
+          <!-- Navigation Menu -->
+          <ul class="navbar__menu">
+            <!-- Each menu item has a data-i18n attribute to update its text -->
+            <li><a href="#" data-i18n="header.jogos">Jogos</a></li>
+            <li><a href="#" data-i18n="header.promocoes">Promoções</a></li>
+            <li>
+              <a href="#" data-i18n="header.casinoAoVivo">Casino ao Vivo</a>
+            </li>
+            <li><a href="#" data-i18n="header.suporte">Suporte</a></li>
+          </ul>
+        </div>
+
+        <!-- Container for CTA Buttons and Switches -->
+        <div class="navbar__actions">
+          <!-- Language Switch: unchecked = Portuguese, checked = English -->
+          <label class="lang-switch">
+            <input type="checkbox" id="lang-toggle" />
+            <span class="slider"></span>
+          </label>
+          <!-- Theme Switch (for Dark/Light mode) -->
+          <label class="theme-switch">
+            <input type="checkbox" id="theme-toggle" />
+            <span class="slider">
+              <span class="thumb"></span>
+            </span>
+          </label>
+          <!-- Login and Registration buttons -->
+          <a
+            href="https://leon211.casino/login"
+            class="btn btn--secondary"
+            data-i18n="header.login"
+          >
+            Login
+          </a>
+          <a
+            href="https://leon211.casino/registration"
+            class="btn btn--primary"
+            data-i18n="header.registreSe"
+          >
+            Registre-se
+          </a>
+        </div>
+      </nav>
+    </header>
+
+    <!-- ===================== MAIN CONTENT ===================== -->
+    <main>
+      <!-- ===================== HERO SLIDER SECTION ===================== -->
+      <section class="hero-slider" aria-label="Featured Offers">
+        <!-- Interactive Background: Falling Coins (confined within slider) -->
+        <div id="falling-coins"></div>
+        <!-- Slider Container -->
+        <div class="slider">
+          <!-- Slide 1 -->
+          <div class="slider__item active">
+            <!-- Slide Text Content -->
+            <div class="slider__content">
+              <h1 class="slider__title" data-i18n="slider.title1">3000€</h1>
+              <p class="slider__description" data-i18n="slider.description1">
+                no Casino e Casino ao vivo <br />
+                + 100 Rodadas Grátis
+              </p>
+              <a
+                href="https://leon211.casino/registration"
+                class="btn btn--highlight"
+                data-i18n="slider.registreSe"
+              >
+                Registre-se
+              </a>
+            </div>
+            <!-- Slide Image -->
+            <div class="slider__image">
+              <img
+                src="assets/images/Casino Chips/3.png"
+                data-dark-src="assets/images/Casino Chips/3.png"
+                data-light-src="/assets/images/Casino Chips/6(copia).png"
+                alt="Bônus"
+              />
+            </div>
+          </div>
+
+          <!-- Slide 2 -->
+          <div class="slider__item">
+            <div class="slider__content">
+              <h1 class="slider__title" data-i18n="slider.title2">
+                Bônus Especial
+              </h1>
+              <p class="slider__description" data-i18n="slider.description2">
+                Aproveite promoções exclusivas <br />
+                e jogue com mais chances!
+              </p>
+              <a
+                href="https://leon211.casino/registration"
+                class="btn btn--highlight"
+                data-i18n="slider.registreSe"
+              >
+                Registre-se
+              </a>
+            </div>
+            <div class="slider__image">
+              <img
+                src="assets/images/Casino Chips/2.png"
+                data-dark-src="assets/images/Casino Chips/2.png"
+                data-light-src="/assets/images/Casino Chips/7(copia).png"
+                alt="Promoção"
+              />
+            </div>
+          </div>
+
+          <!-- Slide 3 -->
+          <div class="slider__item">
+            <div class="slider__content">
+              <h1 class="slider__title" data-i18n="slider.title3">
+                Torneios Diários
+              </h1>
+              <p class="slider__description" data-i18n="slider.description3">
+                Participe das nossas competições <br />
+                e dispute grandes prêmios todos os dias!
+              </p>
+              <a
+                href="https://leon211.casino/registration"
+                class="btn btn--highlight"
+                data-i18n="slider.registreSe"
+              >
+                Registre-se
+              </a>
+            </div>
+            <div class="slider__image">
+              <img
+                src="assets/images/Casino Chips/1.png"
+                data-dark-src="assets/images/Casino Chips/1.png"
+                data-light-src="/assets/images/Casino Chips/8(copia).png"
+                alt="Torneio"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== THREE STEPS SECTION ===================== -->
+      <section class="three-steps" aria-labelledby="three-steps-title">
+        <h2 id="three-steps-title" data-i18n="threeSteps.title">
+          Como começar?
+        </h2>
+        <div class="steps">
+          <article class="step">
+            <h3 data-i18n="threeSteps.step1Title">1. Registre-se</h3>
+            <p data-i18n="threeSteps.step1Text">
+              Junte-se à família Leon, completando o nosso processo de registro
+              rápido e fácil.
+            </p>
+          </article>
+          <article class="step">
+            <h3 data-i18n="threeSteps.step2Title">2. Deposite</h3>
+            <p data-i18n="threeSteps.step2Text">
+              Conte com processamentos/métodos de pagamentos rápidos e variados!
+            </p>
+          </article>
+          <article class="step">
+            <h3 data-i18n="threeSteps.step3Title">3. Jogue</h3>
+            <p data-i18n="threeSteps.step3Text">
+              A sua aventura pessoal na Leon começa a partir daqui!
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <!-- ===================== FEATURES (3 CARDS) SECTION ===================== -->
+      <section class="features" aria-labelledby="features-title">
+        <h2 id="features-title" data-i18n="features.title">
+          O que você encontra na Leon
+        </h2>
+        <div class="cards">
+          <!-- Card 1: Slots -->
+          <article class="card" data-animate="fade-in">
+            <h3 data-i18n="features.slotsTitle">Slots</h3>
+            <p data-i18n="features.slotsText">
+              Mais de 4.500 jogos à sua escolha!
+            </p>
+          </article>
+          <!-- Card 2: Live Games -->
+          <article class="card" data-animate="fade-in">
+            <h3 data-i18n="features.liveGamesTitle">Jogos ao vivo</h3>
+            <p data-i18n="features.liveGamesText">
+              Sinta a emoção de jogar num excelente casino online, com os nossos
+              dealers ao vivo!
+            </p>
+          </article>
+          <!-- Card 3: Excellent Service -->
+          <article class="card" data-animate="fade-in">
+            <h3 data-i18n="features.serviceTitle">Serviço de excelência</h3>
+            <p data-i18n="features.serviceText">
+              Pagamentos rápidos, atendimento ao cliente 24 horas por dia, 7
+              dias por semana.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <!-- ===================== GAME CARDS SECTION (Featured Slots) ===================== -->
+      <section class="game-cards" aria-labelledby="game-cards-title">
+        <h2 id="game-cards-title" data-i18n="gameCards.title">
+          Slots em Destaque
+        </h2>
+        <div class="game-cards__container">
+          <article class="slot-card gates-of-olympus">
+            <div class="slot-card__background"></div>
+            <div class="slot-card__character">
+              <img
+                src="assets/images/Games/Gates of Olympus/Characters/Character.png"
+                alt="Zeus, personagem principal do jogo Gates of Olympus"
+              />
+            </div>
+            <div class="slot-card__logo gates-of-olympus">
+              <img
+                src="assets/images/Games/Gates of Olympus/Logo/vertical logo/GOOL_vertical_logo_EN.png"
+                alt="Gates of Olympus Logo"
+              />
+            </div>
+          </article>
+          <article class="slot-card sweet-bonanza">
+            <div class="slot-card__background"></div>
+            <div class="slot-card__character sweet-bonanza">
+              <img
+                src="assets/images/Games/Sweet Bonanza 1000/Character/Character_1.png"
+                alt="Sweet Bonanza, personagem do jogo"
+              />
+            </div>
+            <div class="slot-card__logo">
+              <img
+                src="assets/images/Games/Sweet Bonanza 1000/Logo/Sweet Bonanza_1000_Horizontal_Logo_EN.png"
+                alt="Sweet Bonanza Logo"
+              />
+            </div>
+          </article>
+          <article class="slot-card wolf-gold">
+            <div class="slot-card__background"></div>
+            <div class="slot-card__character">
+              <img
+                src="assets/images/Games/Wolf Gold Ultimate/Character/Wolf Gold Ultimate_Character 1.png"
+                alt="Wolf Gold, personagem do jogo"
+              />
+            </div>
+            <div class="slot-card__logo">
+              <img
+                src="assets/images/Games/Wolf Gold Ultimate/Logo/Wolf Gold Ultimate_Horizontal.png"
+                alt="Wolf Gold Logo"
+              />
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- ===================== CALL-TO-ACTION SECTION ===================== -->
+      <section class="call-to-action" aria-labelledby="cta-title">
+        <h2 id="cta-title" data-i18n="cta.title">Pronto para começar?</h2>
+        <p data-i18n="cta.text">
+          Registre-se agora e receba até 3000€ + 100 Rodadas Grátis!
+        </p>
+        <a
+          href="https://leon211.casino/registration"
+          class="btn btn--cta"
+          data-i18n="cta.button"
+        >
+          Registre-se
+        </a>
+      </section>
+    </main>
+
+    <!-- ===================== FOOTER SECTION ===================== -->
+    <footer class="footer">
+      <div class="footer-content">
+        <p data-i18n="footer.rights">
+          © 2023 Leon. Todos os direitos reservados.
+        </p>
+      </div>
+    </footer>
+
+    <!-- Include the main JavaScript file -->
+    <script src="js/main.js"></script>
+  </body>
+</html>
